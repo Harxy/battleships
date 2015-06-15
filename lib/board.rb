@@ -2,19 +2,35 @@ require_relative 'boat'
 
 class Board
 
-  attr_accessor :board_array
+  attr_reader :board_array, :size
 
   def initialize
-    @board_array = []
+    @board_array = Array.new(10) {Array.new(10) { 'w' } }
   end
 
-  def make
-    10.times { board_array << (0..9).to_a }
-    board_array
-  end
+  def place_boat(x,y,direction,size)
+    if direction == 's'
+      size.times do
+        board_array[x][y] = 'b'
+        x += 1
+      end
+    elsif direction == 'w'
+      size.times do
+        board_array[x][y] = 'b'
+        y -= 1
+      end
+    elsif direction == 'n'
+      size.times do
+        board_array[x][y] = 'b'
+        x -= 1
+      end
+    elsif direction == 'e'
+      size.times do
+        board_array[x][y] = 'b'
+        y += 1
+      end
+    end
 
-  def place_boat(x,y,direction)
-    [x,y,direction]
   end
 
 end

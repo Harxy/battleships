@@ -4,27 +4,40 @@ describe Board do
 
 
   context "board creation" do
-    it {is_expected.to respond_to :make}
 
     it 'should return an array' do
-      expect(subject.make.is_a?(Array)).to eq true
+      expect(subject.board_array.is_a?(Array)).to eq true
     end
 
     it 'should return an array with 10 items' do
-      expect(subject.make.length).to eq 10
+      expect(subject.board_array.length).to eq 10
     end
 
     it 'should return a multidimensional array' do
-      subject.make
-      expect(subject.board_array[3][4]).to eq 4
+      expect(subject.board_array[3][4]).to eq 'w'
     end
 
   end
 
   context "placing boat on board" do
-    it 'returns x, y and direction as an array' do
-      expect(subject.place_boat(1,2,'s')).to eq [1,2,'s']
+
+    it "places a 1 boat on the board" do
+      subject.place_boat(1,2,'s',1)
+      expect(subject.board_array[1][2]).to eq 'b'
     end
+
+    it 'puts boat on board using size and direction' do
+      subject.place_boat(1,2,'e',8)
+      expect(subject.board_array[1][2]).to eq 'b'
+      expect(subject.board_array[1][5]).to eq 'b'
+    end
+
+    # it "places a 2 boat on the board following direction" do
+    #
+    #   subject.place_boat(1,2,'s')
+    #
+    #
+    # end
 
   end
 end

@@ -17,6 +17,7 @@ describe Boat do
 
   context 'placing a boat on a board' do
    it "returns parameters given to it" do
+
      subject.place(1,2,'n',board)
      expect(subject.x).to eq 1
      expect(subject.y).to eq 2

@@ -13,7 +13,7 @@ class Boat
     @x = x
     @y = y
     @direction = direction
-    board.place_boat(x,y,direction)
+    board.place_boat(x,y,direction,size)
   end
 
 
